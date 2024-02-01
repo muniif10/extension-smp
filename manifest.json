@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Putra SMP - QOL extension",
+  "version": "1.0",
+  "permissions": ["webNavigation", "activeTab", "tabs"],
+  "description": "Adding a few functionality that should be on the site.",
+
+  "content_scripts": [
+    {
+      "matches": ["https://smp.upm.edu.my/smp/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
