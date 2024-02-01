@@ -1,6 +1,6 @@
 // Define a variable to track if the script has been loaded
 let scriptLoaded = false;
-console.log("Background initiated");
+
 var frame = window.frames["contentFrame"];
 var frameDocument;
 if (frame !== undefined) {
@@ -14,17 +14,12 @@ function checkConditionAndLoadScript() {
   var frameDocument;
   if (frame !== undefined) {
     frameDocument = frame.document;
-    console.log(`Frame found in condition`);
+    
   } else {
     frameDocument = document;
-    console.log(
-      `Frame not found in condition, falling back to document frame.`
-    );
+
   }
-  //   frameDocument.getElementById("sems_id_to_register") !== null
-  //   console.log(frame);
-  //   console.log(frameDocument);
-  //   console.log(document);
+
   // Check for your specific condition here
   if (frameDocument.getElementById("sems_id_to_register") !== null) {
     // Ensure the script is loaded only once
@@ -33,10 +28,10 @@ function checkConditionAndLoadScript() {
       !scriptLoaded ||
       frameDocument.getElementById("extensionButtonJadual") == null
     ) {
-      console.log("Found, running script.");
+      
       // Send message to background script to load the extension script
       setTimeout(theThing(), 100);
-      console.log("Requested chrome to run the script.");
+      
       scriptLoaded = true; // Set the flag to true to prevent loading again
     }
   }
@@ -49,27 +44,20 @@ checkConditionAndLoadScript();
 setInterval(checkConditionAndLoadScript, 1000);
 
 function theThing() {
-  console.log("Loaded extension...");
+  
 
   var frame = window.frames[1];
   var frameDocument;
   if (frame !== undefined) {
     frameDocument = frame.document;
-    console.log(`Frame found.`);
+    
   } else {
     frameDocument = document;
-    console.log(`Frame not found, falling back to document frame.`);
+    
   }
-  console.log(frameDocument);
+  
 
-  console.log("Have selected frame, proceeding...");
-
-  // var body = frameDocument.querySelector("html");
-  // var styleElement = document.createElement("style");
-  // styleElement.body= `.customButton{
-  //     color:red !important;
-  // }`
-  // body.appendChild(styleElement);
+  
 
   // Ensure semester and studentId elements are found before getting their attributes
   var semesterElement = frameDocument.getElementById("semsIdToRegister");
